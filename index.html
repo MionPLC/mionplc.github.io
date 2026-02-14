@@ -1,101 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="assets/icon.webp">
-    <title>My Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../assets/icon.webp">
+<title>MionPLC Repository</title>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f1f5f9;
+}
 
-    <link rel="stylesheet" href="styles.css" />
+/* ===== HERO HEADER ===== */
+header {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url('assets/background.webp');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+    position: relative;
+}
+
+/* Image Logo on Top */
+.header-logo {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.header-logo img {
+    width: 200px;
+}
+
+/* Title */
+header h1 {
+    font-size: 42px;
+    margin-top: 80px;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+/* ===== FILTER BUTTONS ===== */
+.filter-buttons {
+    text-align: center;
+    margin: 40px 0 20px 0;
+}
+
+.filter-buttons button {
+    padding: 10px 22px;
+    margin: 6px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    background: #e2e8f0;
+    transition: 0.3s;
+}
+
+.filter-buttons button:hover,
+.filter-buttons button.active {
+    background: #2563eb;
+    color: white;
+}
+
+/* ===== PROJECT GRID ===== */
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 40px;
+}
+
+/* ===== PROJECT CARD WITH BACKGROUND IMAGE ===== */
+.card {
+    position: relative;
+    height: 220px;
+    border-radius: 15px;
+    overflow: hidden;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
+    transition: 0.4s;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+}
+
+.card-content {
+    position: relative;
+    z-index: 2;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* Level Badge */
+.level {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.level.Flowchart { background: #22c55e; }
+.level.opc { background: #f59e0b; }
+.level.software { background: #ef4444; }
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #0f172a;
+    color: white;
+    margin-top: 40px;
+}
+</style>
 </head>
+
 <body>
 
-    <header>
-        <nav>
-            <div class="nav-logo">MionPLC</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#works">Project</a></li>
-                <li><a href="#contact">About</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+    <!-- Image Logo -->
+    <div class="header-logo">
+    	<a href="https://www.youtube.com/@mionplc">
+        <img src="assets/icon.webp" alt="logo"></a>
+    </div>
 
-    <!-- HERO SECTION -->
-    <section id="home" class="hero">
-        <div class="overlay"></div>
+    <h1>MionPLC Repository</h1>
+    <p>Explore the projects that have been created</p>
+</header>
 
-        <div class="hero-content">
-            <img src="assets/icon.webp" alt="Logo" class="hero-logo">
-            <h1>MionPLC Repository</h1>
-            <p>Explore the projects that have been created</p>
-            <a href="#works" class="btn">View Project</a>
+<div class="filter-buttons">
+    <button onclick="filterProjects('all')" class="active">All</button>
+    <button onclick="filterProjects('Flowchart')">Flowchart</button>
+    <button onclick="filterProjects('opc')">OPC</button>
+    <button onclick="filterProjects('software')">Software</button>
+</div>
+
+<section class="projects">
+
+    <!-- Flowchart -->
+    <a href="https://www.youtube.com/watch?v=5TC5ngysSnM" target="_blank"
+       class="card Flowchart"
+       style="background-image:url('https://i3.ytimg.com/vi/5TC5ngysSnM/mqdefault.jpg');">
+        <div class="card-content">
+            <span class="level Flowchart">Flowchart</span>
+            <h3>Water Tank Level</h3>
+            <p>Simulation water tank level with HMI.</p>
         </div>
-    </section>
+    </a>
 
-    <!-- PORTFOLIO -->
-    <section id="works" class="portfolio">
-        <h2>My Projects</h2>
-        <div class="grid">
-            <a href="https://www.youtube.com/@mionplc" target="_blank" class="project-link">
-                <div class="item">
-                    <img src="project1.jpg" alt="Project 1" />
-                    <h3>Project 1</h3>
-                </div>
-            </a>
-            <a href="https://www.youtube.com/@mionplc" target="_blank" class="project-link">
-                <div class="item">
-                    <img src="project1.jpg" alt="Project 1" />
-                    <h3>Project 2</h3>
-                </div>
-            </a>
-            <a href="https://www.youtube.com/@mionplc" target="_blank" class="project-link">
-                <div class="item">
-                    <img src="project1.jpg" alt="Project 1" />
-                    <h3>Project 3</h3>
-                </div>
-            </a>
-            <a href="https://www.youtube.com/@mionplc" target="_blank" class="project-link">
-                <div class="item">
-                    <img src="project1.jpg" alt="Project 1" />
-                    <h3>Project 4</h3>
-                </div>
-            </a>
-            <a href="https://www.youtube.com/@mionplc" target="_blank" class="project-link">
-                <div class="item">
-                    <img src="project1.jpg" alt="Project 1" />
-                    <h3>Project 5</h3>
-                </div>
-            </a>
-            <a href="https://www.youtube.com/@mionplc" target="_blank" class="project-link">
-                <div class="item">
-                    <img src="project1.jpg" alt="Project 1" />
-                    <h3>Project 6</h3>
-                </div>
-            </a>
+    <!-- opc -->
+    <a href="https://www.youtube.com/watch?v=n5pec7nR5ys" target="_blank"
+       class="card opc"
+       style="background-image:url('https://img.youtube.com/vi/n5pec7nR5ys/maxresdefault.jpg');">
+        <div class="card-content">
+            <span class="level opc">OPC</span>
+            <h3>Simulation Offline</h3>
+            <p>Connect CX-Programmer to Easybuilder offline.</p>
         </div>
-    </section>
-
-    <footer id="contact">
-        <div class="social-links">
-            <a href="https://youtube.com/@mionplc" target="_blank">
-                <i class="fab fa-youtube"></i>
-            </a>
-
-            <a href="https://instagram.com/gibranzakynadiansyah" target="_blank">
-                <i class="fab fa-instagram"></i>
-            </a>
+    </a>
+    <a href="https://www.youtube.com/watch?v=7G1L8SaDCmg" target="_blank"
+       class="card opc"
+       style="background-image:url('https://img.youtube.com/vi/7G1L8SaDCmg/maxresdefault.jpg');">
+        <div class="card-content">
+            <span class="level opc">OPC</span>
+            <h3>Setup KepServer</h3>
+            <p>Make connection CX-Programmer to KepServer.</p>
         </div>
+    </a>
 
-        <p>&copy; 2026 MionPLC</p>
-    </footer>
+    <!-- software -->
+    <a href="https://www.youtube.com/@mionplc" target="_blank"
+       class="card software"
+       style="background-image:url('assets/icon.webp');">
+        <div class="card-content">
+            <span class="level software">Software</span>
+            <h3>Coming Soon</h3>
+            <p>Coming Soon, please back again.</p>
+        </div>
+    </a>
 
-    <script src="scripts.js"></script>
+</section>
+
+<footer>
+    © 2026 MionPLC | <a></a>
+</footer>
+
+<script>
+function filterProjects(level) {
+    let cards = document.querySelectorAll('.card');
+    let buttons = document.querySelectorAll('.filter-buttons button');
+
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+
+    cards.forEach(card => {
+        if(level === 'all') {
+            card.style.display = 'flex';
+        } else {
+            if(card.classList.contains(level)) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        }
+    });
+}
+</script>
+
 </body>
 </html>
-
-
